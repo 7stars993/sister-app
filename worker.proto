@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+service WorkerService {
+    rpc StoreFile (FileStoreRequest) returns (FileStoreResponse);
+    rpc RetrieveFile (FileRetrieveRequest) returns (FileRetrieveResponse);
+    rpc RemoveFile (FileRemoveRequest) returns (FileRemoveResponse);
+}
+
+message FileStoreRequest {
+    string file_name = 1;
+    bytes file_data = 2;
+}
+
+message FileStoreResponse {
+    string status = 1;
+}
+
+message FileRetrieveRequest {
+    string file_name = 1;
+}
+
+message FileRetrieveResponse {
+    bytes file_data = 1;
+}
+
+message FileRemoveRequest {
+    string file_name = 1;
+}
+
+message FileRemoveResponse {
+    string status = 1;
+}

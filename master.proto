@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+service MasterService {
+    rpc UploadFile (FileUploadRequest) returns (FileUploadResponse);
+    rpc DownloadFile (FileDownloadRequest) returns (FileDownloadResponse);
+    rpc DeleteFile (FileDeleteRequest) returns (FileDeleteResponse);
+    rpc ListFiles (ListFilesRequest) returns (ListFilesResponse);
+}
+
+message FileUploadRequest {
+    string file_name = 1;
+    bytes file_data = 2;
+}
+
+message FileUploadResponse {
+    string status = 1;
+    string message = 2;
+}
+
+message FileDownloadRequest {
+    string file_name = 1;
+}
+
+message FileDownloadResponse {
+    bytes file_data = 1;
+}
+
+message FileDeleteRequest {
+    string file_name = 1;
+}
+
+message FileDeleteResponse {
+    string status = 1;
+    string message = 2;
+}
+
+message ListFilesRequest {}
+
+message ListFilesResponse {
+    repeated string file_names = 1;
+}
